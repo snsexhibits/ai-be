@@ -29,6 +29,10 @@ const openai = new OpenAI({
 	apiKey: process.env.OPENAI_API_KEY,
 });
 
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
 app.post('/images/generate', async (req, res) => {
 	try {
 		const { prompt } = req.body;
