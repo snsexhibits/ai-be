@@ -7,11 +7,28 @@ import OpenAI, { toFile } from 'openai';
 const app = express();
 const port = 3000;
 
-app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-}));
+const allowedOrigins = [
+  'https://codesandbox.io',
+  'https://sns-exhibits.com'
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like curl or mobile apps)
+    if (!origin) return callback(null, true);
+    
+    // Check if the origin is in the allowed list
+    const isAllowed = allowedOrigins.some((allowed) => origin.startsWith(allowed));
+    
+    if (isAllowed) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS not allowed for this origin: ' + origin));
+    }
+  },
+};
+
+app.use(cors(corsOptions));
 
 app.use(bodyParser.json({ limit: '50mb' }));
 
