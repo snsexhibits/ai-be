@@ -14,13 +14,13 @@ const allowedOrigins = [
 
 const corsOptions = {
   origin: function (origin, callback) {
-    // Allow requests with no origin (like curl or mobile apps)
     if (!origin) return callback(null, true);
-    
-    // Check if the origin is in the allowed list
-    const isAllowed = allowedOrigins.some((allowed) => origin.startsWith(allowed));
-    
-    if (isAllowed) {
+
+    if (
+      origin.includes('codesandbox.io') ||
+      origin.includes('csb.app') || // Codesandbox preview domain
+      origin.startsWith('https://sns-exhibits.com')
+    ) {
       callback(null, true);
     } else {
       callback(new Error('CORS not allowed for this origin: ' + origin));
