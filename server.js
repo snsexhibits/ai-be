@@ -7,11 +7,7 @@ import OpenAI, { toFile } from 'openai';
 const app = express();
 const port = 3000;
 
-const corsOptions = {
-  origin: false, // disables all CORS requests
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(bodyParser.json({ limit: '50mb' }));
 
