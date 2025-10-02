@@ -3,12 +3,11 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import OpenAI, { toFile } from 'openai';
-import multer from 'multer';
 
 const app = express();
 const port = 3000;
 
-const allowedOrigins = process.env.ALLOWED_ORIGINS.split(',');
+const allowedOrigins = '*';
 
 const corsOptions = {
 	origin: (origin, callback) => {
@@ -23,10 +22,8 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json({ limit: '50mb' }));
 
-const upload = multer(); 
-
 const openai = new OpenAI({
-	apiKey: process.env.OPENAI_API_KEY,
+	apiKey: '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',
 });
 
 app.get('/health', (req, res) => {
