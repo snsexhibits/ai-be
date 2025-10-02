@@ -7,19 +7,12 @@ import OpenAI, { toFile } from 'openai';
 const app = express();
 const port = 3000;
 
-const allowedOrigins = '*';
-
 const corsOptions = {
-	origin: (origin, callback) => {
-		if (allowedOrigins.includes(origin)) {
-			callback(null, true);
-		} else {
-			callback(new Error('Not allowed by CORS'));
-		}
-	},
+  origin: false, // disables all CORS requests
 };
 
 app.use(cors(corsOptions));
+
 app.use(bodyParser.json({ limit: '50mb' }));
 
 const openai = new OpenAI({
