@@ -16,7 +16,7 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json({ limit: '50mb' }));
 
 const openai = new OpenAI({
-	apiKey: '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',
+	apiKey: process.env.OPENAI_API_KEY,
 });
 
 app.get('/health', (req, res) => {
