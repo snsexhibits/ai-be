@@ -71,9 +71,10 @@ app.post('/images/generate', async (req, res) => {
 
 			`,
 			n: 1,
-			size: '512x512',
+			size: '1024x1024',
 			output_format: 'webp',
 			output_compression: 100,
+			quality: 'medium',
 		});
 
 		const images = response.data.map(
