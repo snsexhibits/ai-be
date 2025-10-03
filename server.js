@@ -48,7 +48,7 @@ app.post('/images/generate', async (req, res) => {
 		const response = await openai.images.generate({
 			model: 'gpt-image-1',
 			prompt: `
-				Generate a professional 3D render of a custom exhibition booth for a trade show.
+				Generate an ultra-realistic 3D render of a custom exhibition booth for a trade show.
 				Company / theme: ${prompt}
 				Booth size: 20x20 feet (standard expo booth)
 				Style: Modern and eye-catching, designed to attract visitors
@@ -60,11 +60,10 @@ app.post('/images/generate', async (req, res) => {
 				Angle: Perspective front view
 				Make the design look photo-realistic, clean, and professional.
 			`,
-			n: 2,
-			size: '1024x1024',
+			n: 1,
+			size: '1792x1024',
 			output_format: 'webp',
 			output_compression: 100,
-			quality: 'low',
 		});
 
 		const images = response.data.map(
