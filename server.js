@@ -48,20 +48,30 @@ app.post('/images/generate', async (req, res) => {
 		const response = await openai.images.generate({
 			model: 'gpt-image-1',
 			prompt: `
-				Generate an ultra-realistic 3D render of a custom exhibition booth for a trade show.
-				Company / theme: ${prompt}
-				Booth size: 20x20 feet (standard expo booth)
-				Style: Modern and eye-catching, designed to attract visitors
-				Colors: Use professional color combinations matching the company’s branding theme
-				Features: Back wall with the company logo and graphics, reception counter, product display area,
-				LED screens for presentations, seating for meetings, and overhead signage with the brand name
-				Lighting: Bright and professional, suitable for an expo hall
-				Background: Realistic expo environment with people around
-				Angle: Perspective front view
-				Make the design look photo-realistic, clean, and professional.
+					Create an ultra-realistic 3D render of a custom exhibition booth designed for a high-profile trade show.
+					
+					Brand / Theme: ${prompt}  
+					Booth size: 20x20 feet (standard expo size)  
+					Style: Futuristic, visually striking, and immersive — designed to turn heads  
+					Color Palette: Use sleek, branded tones with contrasting accent lighting  
+					Design Features:
+					- Bold architectural elements (curved walls, layered textures, LED strips)
+					- Dynamic back wall with embedded motion graphics and brand storytelling
+					- Modular product showcases with integrated lighting
+					- Interactive touchscreens and projection mapping
+					- Lounge-style seating with smart lighting
+					- Overhead hanging banner or structure with integrated lighting and bold logo
+					
+					Ambience:
+					- Bright, high-contrast lighting suitable for exhibition spaces
+					- Background: A bustling, realistic trade show environment with blurred figures of attendees walking by
+					
+					Camera angle: Cinematic front-left perspective, slightly elevated, dramatic depth of field  
+					Make it: Hyper-realistic, polished, and visually powerful — like a high-end architectural concept render.
+
 			`,
 			n: 1,
-			size: '1024x1024',
+			size: '512x512',
 			output_format: 'webp',
 			output_compression: 100,
 		});
