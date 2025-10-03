@@ -61,7 +61,7 @@ app.post('/images/generate', async (req, res) => {
 				Make the design look photo-realistic, clean, and professional.
 			`,
 			n: 1,
-			size: '1536x1024',
+			size: '1024x1024',
 			output_format: 'webp',
 			output_compression: 100,
 		});
